@@ -68,7 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
       .populate("accounts")
       .exec();
 
-    res.status(200).json({ data });
+    res.status(200).json({ message: "User Created.", data });
   } else {
     const exUser = await UserModel.findOne({ user_id });
     const exUserAccId = exUser.accounts;
@@ -77,14 +77,20 @@ const registerUser = asyncHandler(async (req, res) => {
     let data = await UserModel.findOne({ accounts: exUserAccId }).populate(
       "accounts"
     );
-    res.status(200).json({ data });
+    res.status(200).json({ message: "User Exists. Here is the data", data });
   }
 });
 
 const allUsers = asyncHandler(async (req, res) => {
   const data = await UserModel.find({}).populate("accounts");
 
-  res.status(200).json({ data });
+  if (!data.length) {
+    res.send(400).json({
+      message: "Please add the data first",
+    });
+  }
+
+  res.status(200).json({ message: "All the data is here", data });
 });
 
 module.exports = { registerUser, allUsers };
