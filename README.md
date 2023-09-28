@@ -17,3 +17,7 @@
 
 #For GET request:
 Sends all the users which were created using the POST request from the database
+
+
+#IMPORTANT:
+Removed the MONGO_URI
