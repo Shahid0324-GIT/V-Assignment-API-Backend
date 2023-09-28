@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const bankData = await Promise.all(
       back_accounts.map(async (bank) => {
         const ifscRes = await ifsc.fetchDetails(bank);
-        const ip = "45.127.58.226";
+        const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || '').split(',')[0].trim();
         const fetch_res = await fetch(`https://ipapi.co/${ip}/json/`);
         const fetch_data = await fetch_res.json();
 
