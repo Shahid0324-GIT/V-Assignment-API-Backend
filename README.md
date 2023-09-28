@@ -7,7 +7,7 @@
 
 `A Simple API to create any user in the records provided with a user_id, user_name and bank_accounts.`
 
-#Structure of the API:
+# Structure of the API:
 
 #For POST request:
 "Provide the following details":
@@ -19,5 +19,5 @@
 Sends all the users which were created using the POST request from the database
 
 
-#IMPORTANT:
+# IMPORTANT:
 Removed the MONGO_URI
